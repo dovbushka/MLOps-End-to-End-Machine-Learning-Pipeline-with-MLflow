@@ -1,326 +1,168 @@
-# End-to-End Machine Learning Project with MLflow
+# End-to-end-Machine-Learning-Project-with-MLflow
 
-Production-ready End-to-End Machine Learning pipeline with experiment tracking, model management, and deployment using **MLflow**, **FastAPI**, **Docker**, and **CI/CD**.
 
-This project demonstrates how to design and implement a scalable ML system following **MLOps best practices**.
+## Workflows
 
----
+1. Update config.yaml
+2. Update schema.yaml
+3. Update params.yaml
+4. Update the entity
+5. Update the configuration manager in src config
+6. Update the components
+7. Update the pipeline 
+8. Update the main.py
+9. Update the app.py
 
-## Project Overview
 
-The goal of this project is to build a complete machine learning pipeline that covers the entire lifecycle of an ML model:
 
-- Data ingestion
-- Data validation
-- Data transformation
-- Model training
-- Model evaluation
-- Experiment tracking with MLflow
-- Model deployment via API
+# How to run?
+### STEPS:
 
-The system is designed to be **modular, configurable, and production-ready**.
-
----
-
-## Key Features
-
-- Modular ML pipeline architecture
-- Experiment tracking using **MLflow**
-- Configuration-driven pipeline using YAML files
-- REST API for inference
-- Docker containerization
-- CI/CD with GitHub Actions
-- Cloud deployment ready (AWS EC2 + ECR)
-- Scalable project structure following MLOps practices
-
----
-
-## Tech Stack
-
-**Programming Language**
-
-- Python
-
-**Machine Learning**
-
-- Scikit-learn
-- Pandas
-- NumPy
-
-**MLOps**
-
-- MLflow
-- Docker
-- GitHub Actions
-
-**API**
-
-- FastAPI / Flask
-
-**Cloud**
-
-- AWS EC2
-- AWS ECR
-
----
-
-## Project Architecture
-
-```
-.
-├── config
-│   ├── config.yaml
-│   ├── params.yaml
-│   └── schema.yaml
-│
-├── src
-│   ├── components
-│   │   ├── data_ingestion.py
-│   │   ├── data_validation.py
-│   │   ├── data_transformation.py
-│   │   ├── model_trainer.py
-│   │   └── model_evaluation.py
-│   │
-│   ├── pipeline
-│   │   ├── training_pipeline.py
-│   │   └── prediction_pipeline.py
-│   │
-│   ├── entity
-│   └── config
-│
-├── artifacts
-├── notebooks
-├── app.py
-├── main.py
-├── requirements.txt
-├── Dockerfile
-└── README.md
-```
-
----
-
-## ML Pipeline Workflow
-
-The ML pipeline consists of the following stages:
-
-1. **Data Ingestion**
-   - Load raw dataset
-   - Store data artifacts
-
-2. **Data Validation**
-   - Schema validation
-   - Data integrity checks
-
-3. **Data Transformation**
-   - Feature engineering
-   - Feature scaling
-   - Data preprocessing
-
-4. **Model Training**
-   - Train machine learning model
-   - Hyperparameter configuration
-
-5. **Model Evaluation**
-   - Evaluate performance metrics
-   - Compare experiments
-
-6. **Experiment Tracking**
-   - Log experiments with MLflow
-   - Track parameters, metrics, and artifacts
-
----
-
-## MLflow Tracking
-
-MLflow is used for:
-
-- Experiment tracking
-- Parameter logging
-- Metric logging
-- Model artifact storage
-- Model versioning
-
-Run MLflow UI locally:
+Clone the repository
 
 ```bash
-mlflow ui
+https://github.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow
 ```
-
-Then open:
-
-```
-http://localhost:5000
-```
-
----
-
-## Installation
-
-### Clone the repository
-
-```bash
-git clone https://github.com/yourusername/mlflow-ml-project.git
-cd mlflow-ml-project
-```
-
----
-
-### Create a virtual environment
-
-Using **conda**
+### STEP 01- Create a conda environment after opening the repository
 
 ```bash
 conda create -n mlproj python=3.8 -y
+```
+
+```bash
 conda activate mlproj
 ```
 
-or using **venv**
 
-```bash
-python -m venv venv
-source venv/bin/activate
-```
-
----
-
-### Install dependencies
-
+### STEP 02- install the requirements
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Run the Application
-
-Start the application:
 
 ```bash
+# Finally run the following command
 python app.py
 ```
 
-Then open your browser:
-
+Now,
+```bash
+open up you local host and port
 ```
-http://localhost:5000
-```
 
----
 
-## Running ML Pipeline
 
-To run the training pipeline:
+## MLflow
+
+[Documentation](https://mlflow.org/docs/latest/index.html)
+
+
+##### cmd
+- mlflow ui
+
+### dagshub
+[dagshub](https://dagshub.com/)
+
+MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow.mlflow \
+MLFLOW_TRACKING_USERNAME=entbappy \
+MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0 \
+python script.py
+
+Run this to export as env variables:
 
 ```bash
-python main.py
-```
 
-This will execute the entire pipeline including:
+export MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow.mlflow
 
-- Data ingestion
-- Data transformation
-- Model training
-- Model evaluation
-- MLflow experiment logging
+export MLFLOW_TRACKING_USERNAME=entbappy 
 
----
-
-## Docker Support
-
-Build Docker image:
-
-```bash
-docker build -t ml-project .
-```
-
-Run container:
-
-```bash
-docker run -p 5000:5000 ml-project
-```
-
----
-
-## CI/CD Pipeline
-
-The project includes **GitHub Actions CI/CD pipeline** that performs:
-
-- Build Docker image
-- Push image to AWS ECR
-- Deploy container to AWS EC2
-
-Workflow:
+export MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0
 
 ```
-GitHub → Build Docker Image → Push to ECR → Deploy to EC2
-```
 
----
 
-## AWS Deployment Architecture
 
-Deployment pipeline:
+# AWS-CICD-Deployment-with-Github-Actions
 
-1. Build Docker image
-2. Push Docker image to **AWS ECR**
-3. Launch **EC2 instance**
-4. Pull image from ECR
-5. Run Docker container
+## 1. Login to AWS console.
 
-Services used:
+## 2. Create IAM user for deployment
 
-- AWS EC2
-- AWS ECR
-- GitHub Actions
+	#with specific access
 
----
+	1. EC2 access : It is virtual machine
 
-## Example API Request
+	2. ECR: Elastic Container registry to save your docker image in aws
 
-Prediction endpoint:
 
-```
-POST /predict
-```
+	#Description: About the deployment
 
-Example JSON request:
+	1. Build docker image of the source code
 
-```json
-{
-  "feature_1": 10,
-  "feature_2": 5.5,
-  "feature_3": 2
-}
-```
+	2. Push your docker image to ECR
 
-Example response:
+	3. Launch Your EC2 
 
-```json
-{
-  "prediction": 1
-}
-```
+	4. Pull Your image from ECR in EC2
 
----
+	5. Lauch your docker image in EC2
 
-## Future Improvements
+	#Policy:
 
-- Add model monitoring
-- Add automated retraining pipeline
-- Integrate with Kubernetes
-- Add feature store
-- Implement advanced hyperparameter tuning
+	1. AmazonEC2ContainerRegistryFullAccess
 
----
+	2. AmazonEC2FullAccess
 
-## Author
+	
+## 3. Create ECR repo to store/save docker image
+    - Save the URI: 566373416292.dkr.ecr.ap-south-1.amazonaws.com/mlproj
 
-Machine Learning / MLOps Portfolio Project.
+	
+## 4. Create EC2 machine (Ubuntu) 
 
-Designed to demonstrate real-world **production ML system design**.
+## 5. Open EC2 and Install docker in EC2 Machine:
+	
+	
+	#optinal
 
----
+	sudo apt-get update -y
 
-## License
+	sudo apt-get upgrade
+	
+	#required
 
-This project is licensed under the MIT License.
+	curl -fsSL https://get.docker.com -o get-docker.sh
+
+	sudo sh get-docker.sh
+
+	sudo usermod -aG docker ubuntu
+
+	newgrp docker
+	
+# 6. Configure EC2 as self-hosted runner:
+    setting>actions>runner>new self hosted runner> choose os> then run command one by one
+
+
+# 7. Setup github secrets:
+
+    AWS_ACCESS_KEY_ID=
+
+    AWS_SECRET_ACCESS_KEY=
+
+    AWS_REGION = us-east-1
+
+    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
+
+    ECR_REPOSITORY_NAME = simple-app
+
+
+
+
+## About MLflow 
+MLflow
+
+ - Its Production Grade
+ - Trace all of your expriements
+ - Logging & tagging your model
+
+
